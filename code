@@ -1,0 +1,49 @@
+using System;
+
+namespace numberAdding
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input;
+            string[] splitInput;
+            int number1 = 0;
+
+            //the user enters some numbers that are still a solid string
+            Console.WriteLine("Write a few numbers with kommas inbetween"); 
+            input = Console.ReadLine();
+
+            //the string is split up into individual strings
+            splitInput = input.Split(",");
+
+            //the strings are converted into ints and added up
+            foreach (string number in splitInput)
+            {
+                int newNumber = Convert.ToInt32(number);
+                number1 = newNumber + number1;
+            }
+
+            loop(number1);
+
+        }
+
+        // the singel int is added up to 1 digit
+        public static void loop(int Number)
+        {
+            if (Number >= 10)
+            {
+                Number = Number - 9;
+            }else if(Number <= 8)
+            {
+                Console.WriteLine("your result is " + Number);
+                return;
+            }else
+            {
+                Console.WriteLine("your result was 9 so its 0");
+                return;
+            }
+            loop(Number);
+        }
+    }
+}
